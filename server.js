@@ -66,4 +66,12 @@ app.use('/', router);
 
 app.listen(4000, () => {
     console.log('App listening on port 4000!');
+    console.log('visit http://localhost:4000');
+    console.table({
+        'get:/api/tasks': 'Get all tasks',
+        'put :/api/task': 'Update task',
+        'post:/api/task': 'Create task',
+        'post:/api/start': 'For start task',
+        'post:/api/stop': 'For stop task'
+    });
 });
