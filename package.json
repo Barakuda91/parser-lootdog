@@ -1,0 +1,16 @@
+{
+  "name": "parser-lootdog",
+  "version": "0.1.0",
+  "description": "",
+  "main": "robots/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "barakuda_tm",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "puppeteer": "2.0.0",
+    "puppeteer-core": "2.0.0"
+  }
+}
