@@ -62,6 +62,7 @@ router.get('/api/tasks', (req, res) => {
     ]);
 });
 
+app.use(express.static('static'));
 app.use('/', router);
 
 app.listen(4000, () => {
