@@ -1,0 +1,17 @@
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.item-wrapper {
+    background: #3c4f6b;
+    color: red;
+}
+
+.padding {
+    padding: 10px 20px;
+}
+
+.margin {
+    margin-bottom: 60px;
+}
