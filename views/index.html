@@ -10,86 +10,97 @@
     </head>
     <body>
         <div id="parser">
-            <section class="container add-item-container margin padding">
-                <form method="POST" class="add-item-wrapper">
-                    <div class="add-item">
-                        <input type="text" class="input-simple" v-model="nameItem" placeholder="Название">
+            <section class="add-item-container margin padding">
+                <div class="container">
+                    <form method="POST" class="add-item-wrapper">
+                        <div class="add-item">
+                            <input type="text" class="input-simple" v-model="nameItem" placeholder="Название">
+                        </div>
+                        <div class="add-item">
+                            <input type="number" class="input-simple" v-model="countItemMin" placeholder="count max">
+                        </div>
+                        <div class="add-item">
+                            <input type="number" class="input-simple" v-model="countItemMax" placeholder="count min">
+                        </div>
+                        <div class="add-item">
+                            <input type="number" class="input-simple" v-model="priceItemMin" placeholder="price min">
+                        </div>
+                        <div class="add-item">
+                            <input type="number" class="input-simple" v-model="priceItemMax" placeholder="price sell">
+                        </div>
+                        <div class="add-item">
+                            <input type="url" class="input-simple" v-model="linkItem" placeholder="Ссылка">
+                        </div>
+                        <div class="add-item">
+                            <button type="submit" class="btn-simple">Добавить</button>
+                        </div>
+                    </form>
+                    <div class="output-container">
+                        <div class="title-top-wrapper">
+                            <div class="title-top-box">
+                                <p>count</p>
+                            </div>
+                            <div class="title-top-box">
+                                <p>price</p>
+                            </div>
+                        </div>
+                        <div class="output-wrapper-title">
+                            <div class="output-box-title">
+                                <p>название</p>
+                            </div>
+                            <div class="output-box-title">
+                                <p>buy</p>
+                            </div>
+                            <div class="output-box-title">
+                                <p>sell</p>
+                            </div>
+                            <div class="output-box-title">
+                                <p>min</p>
+                            </div>
+                            <div class="output-box-title">
+                                <p>sell</p>
+                            </div>
+                            <div class="output-box-title">
+                                <p>current</p>
+                            </div>
+                            <div class="output-box-title">
+                                <p>действие</p>
+                            </div>
+                        </div>
+                        <div class="output-wrapper-info">
+                            <div class="output-box-info white-bg center">
+                                <span class="status error"></span>
+                            </div>
+                            <div class="output-box-info bg-table">
+                                <p>Крутая пушка</p>
+                            </div>
+                            <div class="output-box-info center bg-table">
+                                <p>6</p>
+                            </div>
+                            <div class="output-box-info center bg-table">
+                                <p>3</p>
+                            </div>
+                            <div class="output-box-info center bg-table">
+                                <p class="arrow-left">25</p>
+                            </div>
+                            <div class="output-box-info center bg-table">
+                                <p>78</p>
+                            </div>
+                            <div class="output-box-info center bg-table">
+                                <p>30</p>
+                            </div>
+                            <div class="output-box-info error-bg bold center">
+                                <p>stop</p>
+                            </div>
+                            <div class="output-box-info bold center bg-table">
+                                <p class="edit-table" title="редактировать таблицу">edit</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="add-item">
-                        <input type="number" class="input-simple" v-model="countItemMin" placeholder="count max">
-                    </div>
-                    <div class="add-item">
-                        <input type="number" class="input-simple" v-model="countItemMax" placeholder="count min">
-                    </div>
-                    <div class="add-item">
-                        <input type="number" class="input-simple" v-model="priceItemMin" placeholder="price min">
-                    </div>
-                    <div class="add-item">
-                        <input type="number" class="input-simple" v-model="priceItemMax" placeholder="price sell">
-                    </div>
-                    <div class="add-item">
-                        <input type="url" class="input-simple" v-model="linkItem" placeholder="Ссылка">
-                    </div>
-                    <div class="add-item">
-                        <button type="submit" class="btn-simple">Добавить</button>
-                    </div>
-                </form>
-                <div class="output-container">
-                    <div class="output-wrapper-title">
-                        <div class="output-box-title">
-                            <p>название</p>
-                        </div>
-                        <div class="output-box-title">
-                            <p>buy</p>
-                        </div>
-                        <div class="output-box-title">
-                            <p>sell</p>
-                        </div>
-                        <div class="output-box-title">
-                            <p>min</p>
-                        </div>
-                        <div class="output-box-title">
-                            <p>sell</p>
-                        </div>
-                        <div class="output-box-title">
-                            <p>current</p>
-                        </div>
-                        <div class="output-box-title">
-                            <p>действие</p>
-                        </div>
-                    </div>
-                    <div class="output-wrapper-info">
-                        <div class="output-box-info white-bg center">
-                            <span class="status error"></span>
-                        </div>
-                        <div class="output-box-info bg-table">
-                            <p>Крутая пушка</p>
-                        </div>
-                        <div class="output-box-info center bg-table">
-                            <p>6</p>
-                        </div>
-                        <div class="output-box-info center bg-table">
-                            <p>3</p>
-                        </div>
-                        <div class="output-box-info center bg-table">
-                            <p class="arrow-left">25</p>
-                        </div>
-                        <div class="output-box-info center bg-table">
-                            <p>78</p>
-                        </div>
-                        <div class="output-box-info center bg-table">
-                            <p>30</p>
-                        </div>
-                        <div class="output-box-info error-bg bold center">
-                            <p>stop</p>
-                        </div>
-                        <div class="output-box-info bold center bg-table">
-                            <p class="edit-table" title="редактировать таблицу">edit</p>
-                        </div>
-                    </div>
+                    <img src="/img/swipe.svg" alt="swiper" class="swiper">
                 </div>
             </section>
-            <center>{{message}} {{seconds}} seconds</center>
+     
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="/js/main.js"></script>

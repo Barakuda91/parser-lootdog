@@ -7,6 +7,9 @@ const parser = new Vue({
         priceItemMin: null,
         priceItemMax: null,
         linkItem: '',
+    },
+    methods: {
+        
     }
 });
 

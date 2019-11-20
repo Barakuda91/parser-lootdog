@@ -1,6 +1,6 @@
 .output-container {
-    margin-bottom: 30px;
     border-bottom: .5px solid #000;
+
     @media (max-width: 768px) {
         width: 100%;
         overflow-y: scroll;
@@ -9,14 +9,17 @@
     }
 }
 
+
 .output-wrapper-title {
     display: grid;
     grid-template-columns: 4fr 1fr 1fr 2fr 2fr 2fr 4fr;
     border: .5px solid #000;
+
     @media (max-width: 768px) {
         border: none;
         grid-template-columns: 180px 50px 50px 100px 100px 100px 200px;
     }
+
     .output-box-title {
         display: flex;
         justify-content: center;
@@ -25,8 +28,39 @@
         border: .5px solid #000;
         color: #fff;
         background: #232f4a;
+
         @media (max-width: 990px) {
             padding: 8px 5px;
+        }
+    }
+}
+
+.title-top-wrapper {
+    display: grid;
+    grid-template-columns: repeat(16,1fr);
+    @media (max-width: 768px) {
+        grid-template-columns: 180px 50px 50px 100px 100px 100px 200px;
+    }
+    .title-top-box {
+        background: #e8ebff;
+        text-align: center;
+        border: 1px solid #000;
+        padding: 2px;
+    }
+    .title-top-box:first-child {
+        grid-column-start: 5;
+        grid-column-end: 7;
+        @media (max-width: 768px) {
+            grid-column-start: 2;
+            grid-column-end: 4;
+        }
+    }
+    .title-top-box:last-child {
+        grid-column-start: 7;
+        grid-column-end: 13;
+        @media (max-width: 768px) {
+            grid-column-start: 4;
+            grid-column-end: 7;
         }
     }
 }
@@ -35,34 +69,42 @@
     border: .5px solid #000;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr 1fr 2fr 2fr 2fr 2fr 2fr;
+
     @media (max-width: 768px) {
         border: none;
         grid-template-columns: 30px 150px 50px 50px 100px 100px 100px 100px 100px 100px;
     }
+
     .output-box-info {
         border: .5px solid #000;
         padding: 5px;
+
         .status {
             height: 20px;
             width: 20px;
             border-radius: 50%;
             display: block;
+
             @media (max-width: 768px) {
                 height: 15px;
                 width: 15px;
             }
         }
+
         p {
             @media (max-width: 990px) {
                 font-size: .95rem;
             }
         }
+
         .done {
             background: #00cc00;
         }
+
         .error {
             background: #cc0000;
         }
+
         .arrow-left {
             &::before {
                 content: '<';
@@ -71,13 +113,16 @@
             }
         }
     }
+
     .bg-table {
         background: #e8ebff;
     }
+
     .error-bg {
         background: #f8cecc;
         color: #d21919;
     }
+
     .ok-bg {
         background: #d5e8d4;
         color: #7ac679;
@@ -86,4 +131,35 @@
 
 .edit-table {
     cursor: pointer;
+}
+
+.swiper {
+    display: none;
+
+    @media (max-width: 768px) {
+        height: 30px;
+        display: block;
+        margin-top: 5px;
+        position: relative;
+        left: 10px;
+        animation: swiper 2s cubic-bezier(0.1,0.25,0.1,1) 0s infinite; 
+    }
+}
+
+
+@keyframes swiper {
+    0% {
+        left: 10px;
+    }
+
+    100% {
+        left: 40px;
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
