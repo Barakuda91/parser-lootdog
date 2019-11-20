@@ -1,31 +1,17 @@
 .container {
-    border: 1px solid black;
-    background: #3C4F6B;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
-.input-col {
-    padding-right: 0px;
-    padding-left: 0px;
+.item-wrapper {
+    background: #3c4f6b;
+    color: red;
 }
 
-.input-col > input {
-    width: 100%;
-    padding: 2px 3px;
-}
-.input-col > input::placeholder {
-    color: #CCCCCC;
+.padding {
+    padding: 10px 20px;
 }
 
-.col-sm-2.button {
-    padding: 10px 19px;
-}
-
-.col-sm-2.button div{
-    background: aliceblue;
-    width: 100%;
-    height: 100%;
-}
-
-.input-row {
-    padding: 10px;
+.margin {
+    margin-bottom: 60px;
 }

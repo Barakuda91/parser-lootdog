@@ -1,49 +1,41 @@
 <html>
 <head>
-    <title>Parser</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Express HTML</title>
+    <link rel="stylesheet" href="/../static/css/main.css">
 </head>
 <body>
-<div class="container" id="parser">
-    <div class="row">
-        <div class="col-sm-10">
-            <div class="row input-row">
-                <div class="col-sm-4 input-col">
-                    <input type="text" placeholder="название">
+    <div id="parser">
+        <section class="container margin padding">
+            <form method="POST" class="add-item-block">
+                <div class="input-box">
+                    <input type="text" v-model="nameItem" placeholder="Название">
                 </div>
-                <div class="col-sm-2 input-col">
-                    <input type="text" placeholder="count min">
+                <div class="input-box">
+                    <input type="number" v-model="countItemMin" placeholder="count max">
                 </div>
-                <div class="col-sm-2 input-col">
-                    <input type="text" placeholder="count max">
+                <div class="input-box">
+                    <input type="number" v-model="countItemMax" placeholder="count min">
                 </div>
-                <div class="col-sm-2 input-col">
-                    <input type="text" placeholder="price min">
+                <div class="input-box">
+                    <input type="number" v-model="priceItemMin" placeholder="price min">
                 </div>
-                <div class="col-sm-2 input-col">
-                    <input type="text" placeholder="price sell">
+                <div class="input-box">
+                    <input type="number" v-model="priceItemMax" placeholder="price sell">
                 </div>
-            </div>
-            <div class="row input-row">
-                <div class="col-sm input-col">
-                    <input type="text" placeholder="ссылка">
+                <div class="input-box">
+                    <input type="number" v-model="linkItem" placeholder="Ссылка">
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-2 button">
-            <div>Добавить</div>
-        </div>
+                <div class="button-box">
+                    <button type="button" class="btn-simple">Добавить</button>
+                </div>
+            </form>
+        </section>
+        <center>{{message}} {{seconds}} seconds</center>
     </div>
-    <div class="row">
-        
-    </div>
-</div>
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="/js/main.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/main.css" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
 </html>
