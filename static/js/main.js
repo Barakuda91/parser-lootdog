@@ -9,10 +9,23 @@ const parser = new Vue({
         linkItem: '',
     },
     methods: {
-        
+        sendItem() {
+            axios.post('/api/task', {
+                    body: [
+                        this.nameItem,
+                        this.countItemMin,
+                        this.countItemMax,
+                        this.priceItemMin,
+                        this.priceItemMax,
+                        this.linkItem
+                    ]
+                })
+                .then(function(response) {
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
     }
 });
-
-(() => {
-    setInterval(() => parser.seconds++, 999);
-})();
