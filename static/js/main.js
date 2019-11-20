@@ -1,8 +1,7 @@
 const parser = new Vue({
     el: '#parser',
     data: {
-        message: 'You on the page',
-        seconds: 0
+
     }
 });
 
