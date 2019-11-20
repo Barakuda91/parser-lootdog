@@ -1,0 +1,109 @@
+.add-item-container {
+  background: #3c4f6b;
+}
+
+.add-item-wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  grid-gap: 5px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .add-item-wrapper {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.add-item-wrapper .btn-simple {
+  background: #e8ebff;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.add-item-wrapper .btn-simple:hover {
+  background: #babfdd;
+  -webkit-box-shadow: 0 0 10px 0 #babfdd;
+          box-shadow: 0 0 10px 0 #babfdd;
+}
+
+.add-item:first-child {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+@media (max-width: 768px) {
+  .add-item:first-child {
+    -ms-grid-column: 1;
+        grid-column-start: 1;
+    grid-column-end: 3;
+    -ms-grid-row: auto;
+        grid-row-start: auto;
+    grid-row-end: auto;
+  }
+}
+
+.add-item:nth-child(5) {
+  -ms-grid-column: 5;
+      grid-column-start: 5;
+  grid-column-end: 6;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+@media (max-width: 768px) {
+  .add-item:nth-child(5) {
+    -ms-grid-column: auto;
+        grid-column-start: auto;
+    grid-column-end: auto;
+    -ms-grid-row: auto;
+        grid-row-start: auto;
+    grid-row-end: auto;
+  }
+}
+
+.add-item:nth-child(6) {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+@media (max-width: 768px) {
+  .add-item:nth-child(6) {
+    -ms-grid-column: 1;
+        grid-column-start: 1;
+    grid-column-end: 3;
+    -ms-grid-row: auto;
+        grid-row-start: auto;
+    grid-row-end: auto;
+  }
+}
+
+.add-item:last-child {
+  -ms-grid-column: 7;
+      grid-column-start: 7;
+  grid-column-end: 8;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+@media (max-width: 768px) {
+  .add-item:last-child {
+    -ms-grid-column: 1;
+        grid-column-start: 1;
+    grid-column-end: 3;
+    -ms-grid-row: auto;
+        grid-row-start: auto;
+    grid-row-end: auto;
+  }
+}
+/*# sourceMappingURL=add-item-form.css.map */

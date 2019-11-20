@@ -1,0 +1,8 @@
+{
+  "isOnline": {"type": "Boolean"},
+  "title": {"type": "String"},
+  "count": {"type": "Mixed"},
+  "price": {"type": "Mixed"},
+  "updatedAt": {"type": "String"},
+  "createdAt": {"type": "String"}
+}
