@@ -7,6 +7,21 @@ const parser = new Vue({
         priceItemMin: null,
         priceItemMax: null,
         linkItem: '',
+        output: null,
+    },
+    created() {
+        axios.get('/api/tasks ')
+            .then(response => (this.output = response.data))
+            .catch(error => (console.log(error)));
+    },
+    mounted() {
+        // setTimeout(function() {
+        //     if (this.status == false) {
+        //         this.error = true;
+        //     } else {
+        //         this.done = true;
+        //     }
+        // }, 0);
     },
     methods: {
         sendItem() {
