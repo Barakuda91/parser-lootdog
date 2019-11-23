@@ -12,29 +12,32 @@
 
 <body>
     <div id="parser">
+        <div class="preloader" v-if="isLoading">
+            <img src="/img/preloader.gif" alt="preloader">
+        </div>
         <section class="add-item-container margin padding">
             <div class="container">
-                <form method="POST" @submit.prevent="sendItem" class="add-item-wrapper">
+                <form method="POST" @submit.prevent="actionButton" class="add-item-wrapper">
                     <div class="add-item">
-                        <input type="text" class="input-simple" v-model="nameItem" placeholder="Название" required>
+                        <input type="text" class="input-simple" v-model="title" placeholder="Название">
                     </div>
                     <div class="add-item">
-                        <input type="number" class="input-simple" min="0" v-model="countItemMin" placeholder="count max" required>
+                        <input type="number" class="input-simple" min="0" v-model="count.buy" placeholder="count max">
                     </div>
                     <div class="add-item">
-                        <input type="number" class="input-simple" min="0" v-model="countItemMax" placeholder="count min" required>
+                        <input type="number" class="input-simple" min="0" v-model="count.sell" placeholder="count min">
                     </div>
                     <div class="add-item">
-                        <input type="number" class="input-simple" min="0" v-model="priceItemMin" placeholder="price min" required>
+                        <input type="number" class="input-simple" min="0" v-model="price.min" placeholder="price min">
                     </div>
                     <div class="add-item">
-                        <input type="number" class="input-simple" min="0" v-model="priceItemMax" placeholder="price sell" required>
+                        <input type="number" class="input-simple" min="0" v-model="price.max" placeholder="price sell">
                     </div>
                     <div class="add-item">
-                        <input type="url" class="input-simple" v-model="linkItem" placeholder="Ссылка" required>
+                        <input type="url" class="input-simple" v-model="link" placeholder="Ссылка">
                     </div>
                     <div class="add-item">
-                        <button type="submit" class="btn-simple">Добавить</button>
+                        <button type="submit" class="btn-simple">{{button}}</button>
                     </div>
                 </form>
                 <div class="output-container">
@@ -99,7 +102,7 @@
                             <p>start</p>
                         </div>
                         <div class="output-box-info bold center bg-table">
-                            <p class="edit-table" title="редактировать таблицу">edit</p>
+                            <p class="edit-table" v-on:click="edit(data._id)" title="редактировать таблицу">edit</p>
                         </div>
                     </div>
                 </div>

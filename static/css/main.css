@@ -413,4 +413,29 @@ input::-webkit-inner-spin-button {
   margin: 0;
   /* <-- Apparently some margin are still there even though it's hidden */
 }
+
+.preloader {
+  background: rgba(255, 255, 255, 0.8);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 9999;
+}
+
+.preloader img {
+  height: 50px;
+}
 /*# sourceMappingURL=main.css.map */
