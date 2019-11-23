@@ -95,14 +95,14 @@
                         <div class="output-box-info center bg-table">
                             <p>{{ data.price.current }}</p>
                         </div>
-                        <div v-if="!data.isOnline" class="output-box-info error-bg bold center">
+                        <div v-if="!data.isOnline" v-on:click="stopStatus(data._id)" class="output-box-info error-bg bold center">
                             <p>stop</p>
                         </div>
-                        <div v-if="data.isOnline" class="output-box-info ok-bg bold center">
+                        <div v-if="data.isOnline" v-on:click="startStatus(data._id)" class="output-box-info ok-bg bold center">
                             <p>start</p>
                         </div>
-                        <div class="output-box-info bold center bg-table">
-                            <p class="edit-table" v-on:click="edit(data._id)" title="редактировать таблицу">edit</p>
+                        <div class="output-box-info bold center bg-table cursor" v-on:click="edit(data._id)">
+                            <p class="edit-table" title="редактировать таблицу">edit</p>
                         </div>
                     </div>
                 </div>
