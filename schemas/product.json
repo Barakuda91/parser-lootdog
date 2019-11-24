@@ -3,6 +3,7 @@
   "title": {"type": "String"},
   "count": {"type": "Mixed"},
   "price": {"type": "Mixed"},
+  "link": {"type": "String"},
   "updatedAt": {"type": "String"},
   "createdAt": {"type": "String"}
 }

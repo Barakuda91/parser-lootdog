@@ -5,7 +5,7 @@
   "main": "robots/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node start.js"
   },
   "author": "barakuda_tm",
   "license": "ISC",

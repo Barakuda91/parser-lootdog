@@ -9,9 +9,14 @@ const parser = new Vue({
         linkItem: '',
         output: null,
     },
+    // created() {
+    //     axios.get('/api/tasks ')
+    //         .then(response => (this.output = response.data.data))
+    //         .catch(error => (console.log(error)));
+    // },
     created() {
         axios.get('/api/tasks ')
-            .then(response => (this.output = response.data))
+            .then(response => (this.output = response.data.data))
             .catch(error => (console.log(error)));
     },
     mounted() {
@@ -26,14 +31,17 @@ const parser = new Vue({
     methods: {
         sendItem() {
             axios.post('/api/task', {
-                    body: [
-                        this.nameItem,
-                        this.countItemMin,
-                        this.countItemMax,
-                        this.priceItemMin,
-                        this.priceItemMax,
-                        this.linkItem
-                    ]
+                        title: this.nameItem,
+                        count: {
+                            buy: this.countItemMin,
+                            sell: this.countItemMax
+                        },
+                        price: {
+                            sell: this.priceItemMax,
+                            min: this.priceItemMin,
+                            current: null
+                        },
+                        link: this.linkItem
                 })
                 .then(function(response) {
                     console.log(response);

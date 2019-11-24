@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require("body-parser");
 const Task = require(`${ROOT_DIR}/Models/Task`);
 const router = express.Router();
 let port = 4000;
@@ -17,75 +18,17 @@ module.exports = class Router{
 
         this.router.get('/', (req, res) => res.sendFile(path.join(ROOT_DIR+'/views/index.html')));
 
-        this.router.post('/api/start', Task.startTask); // закинуть статус в базу
-        this.router.post('/api/stop/', Task.stopTask); // закинуть статус в базу
-        // при старте запускается таска парсера,
-        // которая достает все активные таски из базы
-        // по очереде парсер заходит на таску и проверяет
-        //      если цена ниже заданного покупаем позволеное количество
-        //      если цена выше заданного:
-        //          есть на продажу товар,
-        //              если есть - выставляем
-        //              если нет - следующая итерация
+        this.router.post('/api/start', Task.startTask);
+        this.router.post('/api/stop/', Task.stopTask);
 
         this.router.post('/api/task', Task.postTask);
         this.router.put('/api/task', Task.putTask);
         this.router.get('/api/tasks', Task.getTasks);
-        // this.router.get('/api/tasks', (req, res) => {
-        //     res.send([
-        //         {
-        //             isOnline: false,
-        //             title: 'Shine diamond',
-        //             count: {
-        //                 buy: 10,
-        //                 sell: 2
-        //             },
-        //             price: {
-        //                 min: 200,
-        //                 sell: 210,
-        //                 current: 198
-        //             }
-        //         }, {
-        //             isOnline: false,
-        //             title: 'Rock wood',
-        //             count: {
-        //                 buy: 15,
-        //                 sell: 13
-        //             },
-        //             price: {
-        //                 min: 52,
-        //                 sell: 60,
-        //                 current: 51
-        //             }
-        //         }, {
-        //             isOnline: true,
-        //             title: 'Яркий самоцвет симбиотов',
-        //             count: {
-        //                 buy: 12,
-        //                 sell: 12
-        //             },
-        //             price: {
-        //                 min: 45,
-        //                 sell: 65,
-        //                 current: 32
-        //             }
-        //         }, {
-        //             isOnline: true,
-        //             title: 'Аксесуар "расписная ширма"',
-        //             count: {
-        //                 buy: 0,
-        //                 sell: 0
-        //             },
-        //             price: {
-        //                 min: 120,
-        //                 sell: 250,
-        //                 current: 58
-        //             }
-        //         }
-        //     ]);
-        // });
+        this.app.use(bodyParser.urlencoded({extended: true}));
+        this.app.use(bodyParser.json());
         this.app.use((req, res, next) => {
             req.orm = this.orm;
+            //req.body = JSON.parse(req.body);
             next();
         });
         this.app.use(express.static('./static'));
