@@ -25,7 +25,8 @@ const parser = new Vue({
     },
     methods: {
         actionButton() {
-            this.isEdit ? this.methods.sendTask("put") : this.methods.sendTask("post");
+            console.log(this);
+            this.isEdit ? this.sendTask("put") : this.sendTask("post");
         },
         sendTask(method) {
             this.isLoading = true;
