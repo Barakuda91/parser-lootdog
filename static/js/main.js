@@ -21,7 +21,7 @@ const parser = new Vue({
         stop: 'stop'
     },
     async created() {
-        this.output = (await new Promise((cb) => axios.get('/api/tasks').then(cb).then(this.isLoading = false).catch(error => console.log(error)))).data;
+        this.output = (await new Promise((cb) => axios.get('/api/tasks').then(cb).catch(error => console.log(error)).finally(() => (this.isLoading = false)))).data;
     },
     methods: {
         actionButton() {
@@ -47,14 +47,14 @@ const parser = new Vue({
                 })
                 .then(function(response) {
                     console.log(response);
-                    this.isLoading = false;
                     this.button = "Добавить";
                     alert("Успешно отправленно");
                 })
                 .catch(function(error) {
                     console.log(error);
                     alert("Мы решаем проблему");
-                });
+                })
+                .finally(() => (this.isLoading = false));
         },
         edit(id) {
             this.isEdit = true;
@@ -80,13 +80,13 @@ const parser = new Vue({
             })
             .then(function(response) {
                 console.log(response);
-                this.isLoading = false;
                 alert("Статус изменён");
             })
             .catch(function(error) {
                 console.log(error);
                 alert("Мы решаем проблему");
-            });
+            })
+            .finally(() => (this.isLoading = false));
         },
         startStatus(id) {
             this.isEdit = true;
@@ -98,13 +98,13 @@ const parser = new Vue({
             })
             .then(function(response) {
                 console.log(response);
-                this.isLoading = false;
                 alert("Статус изменён");
             })
             .catch(function(error) {
                 console.log(error);
                 alert("Мы решаем проблему");
-            });
+            })
+            .finally(() => (this.isLoading = false));
         }
     }
 });
