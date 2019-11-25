@@ -1,5 +1,6 @@
 const parser = new Vue({
     el: '#parser',
+    errorAlert: 'Упс. Что-то пошло не так.',
     data: {
         title: '',
         count: {
@@ -21,11 +22,13 @@ const parser = new Vue({
         stop: 'stop'
     },
     async created() {
-        this.output = (await new Promise((cb) => axios.get('/api/tasks').then(cb).catch(error => console.log(error)).finally(() => (this.isLoading = false)))).data;
+        this.output = (await new Promise((cb) => axios.get('/api/tasks')
+            .then(cb)
+            .catch(error => console.log(error)))).data;
+        this.isLoading = false
     },
     methods: {
         actionButton() {
-            console.log(this);
             this.isEdit ? this.sendTask("put") : this.sendTask("post");
         },
         sendTask(method) {
@@ -45,16 +48,15 @@ const parser = new Vue({
                         link: this.linkItem
                     }
                 })
-                .then(function(response) {
-                    console.log(response);
+                .then((response) => {
                     this.button = "Добавить";
                     alert("Успешно отправленно");
                 })
-                .catch(function(error) {
+                .catch((error) => {
                     console.log(error);
-                    alert("Мы решаем проблему");
+                    alert(this.errorAlert);
                 })
-                .finally(() => (this.isLoading = false));
+                .finally(() => this.isLoading = false);
         },
         edit(id) {
             this.isEdit = true;
@@ -78,15 +80,12 @@ const parser = new Vue({
                     status: this.stop
                 }
             })
-            .then(function(response) {
-                console.log(response);
-                alert("Статус изменён");
-            })
+            .then((response) => alert("Статус изменён"))
             .catch(function(error) {
                 console.log(error);
-                alert("Мы решаем проблему");
+                alert(this.errorAlert);
             })
-            .finally(() => (this.isLoading = false));
+            .finally(() => this.isLoading = false);
         },
         startStatus(id) {
             this.isEdit = true;
@@ -96,15 +95,12 @@ const parser = new Vue({
                     status: this.start
                 }
             })
-            .then(function(response) {
-                console.log(response);
-                alert("Статус изменён");
-            })
-            .catch(function(error) {
+            .then((response) => alert("Статус изменён"))
+            .catch((error) => {
                 console.log(error);
-                alert("Мы решаем проблему");
+                alert(this.errorAlert);
             })
-            .finally(() => (this.isLoading = false));
+            .finally(() => this.isLoading = false);
         }
     }
 });
