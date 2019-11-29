@@ -51,9 +51,18 @@ module.exports = class Lootdog {
                 loginNameClass: '#root > div > header > div.b-header__user > div:nth-child(4) > div > div.b-header__user-link',
                 targetPrice: '#root > div > section > div > div.b-loading > div > div > div.b-product.row > div.col.span_7.b-product__col > div > div:nth-child(3) > div > div.b-product__purchase-price',
                 modalError: '#root > div > div.b-modal-overlay > div > button',
+                buyButton: '#root > div > section > div > div > div.row > div > div.b-product.row > div.col.span_7.b-product__col > div > div:nth-child(3) > div > div.b-product__purchase-actions > a',
+                buyModal: '#root > div > div.b-modal-overlay > div > div > div > div',
+                buyAgreeCheckbox: '#root > div > div.b-modal-overlay > div > div > div > div > div.b-dialog__submit.b-dialog__submit_buy > span > input[type=checkbox]',
+                buyModalWallet: '#root > div > div.b-modal-overlay > div > div > div > div > div:nth-child(4) > div > div > div:nth-child(1) > div > dl:nth-child(3) > dd',
+                buyModalPrice: '#root > div > div.b-modal-overlay > div > div > div > div > div:nth-child(4) > div > div > div:nth-child(2) > div',
+                buyModalButton: '#root > div > div.b-modal-overlay > div > div > div > div > div.b-dialog__submit.b-dialog__submit_buy > div > button.b-btn_blue.b-dialog__submit-btn.instant_buy_button > span',
+                buyModalSuccess: '#root > div > div.b-modal-overlay > div > div > div > div > div.b-box.b-box_success > div > div > span'
             }
         });
     }
+
+    async autorisation() {}
 
     async autorisation() {
         const loginAs = this.settings.loginAs;
@@ -85,6 +94,14 @@ module.exports = class Lootdog {
     async start() {
         await this.autorisation();
         //await this.loop();
+        // при старте открываем окно, проходим регистрацию
+        // достаем из базы все таски
+        // по очереде парсер заходит на таску и проверяет
+        //      если цена ниже заданного покупаем позволеное количество
+        //      если цена выше заданного:
+        //          есть на продажу товар,
+        //              если есть - выставляем
+        //              если нет - следующая итерация
     }
 
     async loop() {
@@ -102,10 +119,26 @@ module.exports = class Lootdog {
                 const currentPrice = parseFloat(await parser.getText('targetPrice'));
                 const data = await this.orm.products.updateOne({_id: task._id}, {$set: {'price.current': currentPrice}});
 
+                currentPrice < task.price.min && await this.buy(task);
+
                 console.log(`${task.link}: done. currentPrice = ${currentPrice}`, data);
             }
         }
 
         await this.loop();
+    }
+
+    async buy(task) {
+        await parser.openPage(task.link);
+        await parser.clickAndWait('buyButton', 'buyModal');
+        const price = parseFloat(await parser.getText('buyModalPrice'));
+        const wallet = parseFloat(await parser.getText('buyModalWallet'));
+        if (price < wallet) {
+            /*покупаем*/
+
+        } else {
+            /*показываем ошибку*/
+
+        }
     }
 };
